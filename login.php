@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-<head><title>Login</title></head>
-<body>
-    <?php if (isset($_GET['error'])) echo "<p style='color:red;'>Invalid credentials</p>"; ?>
-    <form action="process.php" method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <br>z
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>   
 
+    <div class="box">
+        <h2>Login</h2>
+        
+        <?php
+        if (isset($_GET['error'])) {
+            echo '<p class="error">Invalid username or password!</p>';
+        }
+        ?>
+
+        <form action="process.php" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="info">
+            <strong>Test Credentials:</strong><br>
+            Admin: admin / admin<br>
+            Cashier: cashier / cashier
+        </div>
+    </div>
 </body>
 </html>

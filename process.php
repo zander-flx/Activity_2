@@ -7,32 +7,25 @@
 </head>
 <body>
     <?php
-        session_start();
+    session_start();
 
-    $users = [
-    'admin' => 'admin',
-    'cashier' => 'cashier'
-    ];
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        if (isset($users[$username]) && $users[$username] === $password) {
-            $_SESSION['username'] = $username;
-            $_SESSION['logged_in'] = true;
-            
-            if ($username === 'admin') {
-                header("Location: admin.php");
-            } else {
-                header("Location: cashier.php");
-            }
-            exit;
-        } else {
-            header("Location: login.php?error=1");
-            exit;
-        }
+    if ($username === 'admin' && $password === 'admin') {
+        $_SESSION['role'] = 'admin';
+        header("Location: admin.php");
+        exit();
+    } 
+    elseif ($username === 'cashier' && $password === 'cashier') {
+        $_SESSION['role'] = 'cashier';
+        header("Location: cashier.php");
+        exit();
+    } 
+    else {
+        header("Location: login.php?error=1");
+        exit();
     }
-?>   
+    ?>  
 </body>
 </html>

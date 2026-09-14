@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cashier Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome Cashier</h1>
+
+    <div class="box">
+        <h2>Welcome Cashier</h2>
+        <p>You have successfully logged into the cashier panel.</p>
+        <br>
+        <a href="logout.php">Logout</a>
+    </div>
+
 </body>
 </html>
