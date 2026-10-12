@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cashier Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php
+session_start();
+$isActive = ($_SESSION['isActive'] ?? false);
+$role = $_SESSION['role'];
 
-    <div class="box">
-        <h2>Welcome Cashier</h2>
-        <p>You have successfully logged into the cashier panel.</p>
-        <br>
-        <a href="logout.php">Logout</a>
-    </div>
+if ($isActive && $role != 'cashier') {
+   header('location: login.php');
+}
 
-</body>
-</html>
+echo"<h1>Welcome Cashier!</h1>";
+echo"<p>Hello, " . $_SESSION['user'] . "</p>";
+?>
+<form action="logout.php">
+    <input type="submit" value="Logout">
+</form>

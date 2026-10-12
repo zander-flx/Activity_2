@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php
+session_start();
+$isActive = ($_SESSION['isActive'] ?? false);
+$role = $_SESSION['role'];
 
-    <div class="box">
-        <h2>Welcome Admin</h2>
-        <p>You have successfully logged into the admin panel.</p>
-        <br>
-        <a href="logout.php">Logout</a>
-    </div>
+if ($isActive && $role != 'admin') {
+   header('location: login.php');
+}
 
-</body>
-</html>
+echo "<h1>Welcome Admin!</h1>";
+echo "<p>Hello, " . $_SESSION['user'] . "</p>";
+?>
+
+<form action="logout.php">
+    <input type="submit" value="Logout">
+</form>
